@@ -22,7 +22,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    Greeting("Test")
+
                 }
             }
         }
@@ -30,14 +30,16 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+fun BirthdayGreetingWithText(message: String, modifier: Modifier = Modifier) {
+    Text(
+        text = message
+    )
 }
 
-@Preview(name = "My Preview", showBackground = true, showSystemUi = true)
+@Preview(showBackground = true, name = "GreetingCardPreview", showSystemUi = true)
 @Composable
-fun DefaultPreview() {
+fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        Greeting("Android")
+        BirthdayGreetingWithText("HAPPY BIRTHDAY ANDROID!")
     }
 }
