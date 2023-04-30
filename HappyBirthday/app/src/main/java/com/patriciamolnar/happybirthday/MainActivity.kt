@@ -4,16 +4,18 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.patriciamolnar.happybirthday.ui.theme.HappyBirthdayTheme
 
@@ -27,7 +29,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    BirthdayGreetingWithImage("生日快乐，莫先生！", "- 成燕芷")
+                    BirthdayGreetingWithImage(
+                        stringResource(R.string.happy_birthday_text),
+                        stringResource(R.string.signature_text)
+                    )
                 }
             }
         }
@@ -40,7 +45,8 @@ fun BirthdayGreetingWithImage(message: String, from: String, modifier: Modifier 
     Box {
         Image(
             painter = image,
-            contentDescription = null
+            contentDescription = null,
+            contentScale = ContentScale.Crop
         )
         BirthdayGreetingWithText(message, from)
     }
@@ -48,14 +54,19 @@ fun BirthdayGreetingWithImage(message: String, from: String, modifier: Modifier 
 
 @Composable
 fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier = Modifier) {
-    Column(modifier = modifier) {
+    Column(
+        modifier = modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceAround,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
         Text(
             text = message,
             fontSize = 30.sp
         )
         Text(
             text = from,
-            fontSize = 24.sp
+            fontSize = 24.sp,
+            modifier = Modifier.align(Alignment.End).padding(end = 80.dp, bottom = 50.dp)
         )
     }
 }
@@ -64,6 +75,9 @@ fun BirthdayGreetingWithText(message: String, from: String, modifier: Modifier =
 @Composable
 fun BirthdayCardPreview() {
     HappyBirthdayTheme {
-        BirthdayGreetingWithImage("生日快乐，莫先生！", "- 成燕芷")
+        BirthdayGreetingWithImage(
+            stringResource(R.string.happy_birthday_text),
+            stringResource(R.string.signature_text)
+        )
     }
 }

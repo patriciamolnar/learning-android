@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Happy Birthday</string>
+    <string name="happy_birthday_text">生日快乐，莫先生</string>
+    <string name="signature_text">- 成燕芷</string>
 </resources>
