@@ -16,6 +16,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.patriciamolnar.composequadrant.ui.theme.ComposeQuadrantTheme
@@ -39,42 +41,52 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CreateLayout(modifier: Modifier = Modifier) {
-    Column(modifier = modifier.border(2.dp, Color.Cyan)) {
+    Column() {
         Row(
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth().fillMaxHeight(0.5F)
         ) {
             Column(
                 modifier = modifier
                     .background(color = Color.Green, shape = RectangleShape)
-                    .weight(1F)
+                    .weight(1F).fillMaxHeight(1F).padding(16.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
             ) {
-                Text(text = "Text composable")
-                Text(text = "Displays text and follows Material Design guidelines.\n")
+                Text(
+                    text = "Text composable",
+                    fontWeight = FontWeight.Bold,
+                    modifier = modifier.padding(bottom = 16.dp)
+                )
+                Text(
+                    text = "Displays text and follows Material Design guidelines.\n",
+                    style = MaterialTheme.typography.body1,
+                    textAlign = TextAlign.Justify
+                )
             }
 
             Column(
                 modifier = modifier
                     .background(color = Color.Yellow, shape = RectangleShape)
-                    .weight(1F)
+                    .weight(1F).fillMaxHeight(1F)
             ) {
                 Text(text = "Image composable\n")
                 Text(text = "Creates a composable that lays out and draws a given Painter class object.\"")
             }
         }
         Row(
-            modifier = modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth().fillMaxHeight(1F)
         ) {
             CreateTile(
                 title = "Row composable",
                 description = "A layout composable that places its children in a horizontal sequence.",
                 color = Color.Cyan,
-                modifier = modifier.weight(1F)
+                modifier = modifier.weight(1F).fillMaxHeight(1F)
             )
             CreateTile(
                 title = "Column composable",
                 description = "A layout composable that places its children in a vertical sequence.",
                 color = Color.LightGray,
-                modifier = modifier.weight(1F)
+                modifier = modifier.weight(1F).fillMaxHeight(1F)
             )
         }
     }
