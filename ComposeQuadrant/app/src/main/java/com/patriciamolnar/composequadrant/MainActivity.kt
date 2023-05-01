@@ -13,6 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -43,15 +44,15 @@ fun CreateLayout(modifier: Modifier = Modifier) {
             modifier = modifier.fillMaxWidth().fillMaxHeight(0.5F)
         ) {
             CreateTile(
-                title = "Text composable",
-                description = "Displays text and follows Material Design guidelines.\n",
+                title = stringResource(R.string.text_composable_title),
+                description = stringResource(R.string.text_composable_desc),
                 color = Color.Green,
                 modifier = modifier.weight(1F)
             )
 
             CreateTile(
-                title = "Image composable\n",
-                description = "Creates a composable that lays out and draws a given Painter class object.\"",
+                title = stringResource(R.string.image_composable_title),
+                description = stringResource(R.string.image_composable_desc),
                 color = Color.Yellow,
                 modifier = modifier.weight(1F)
             )
@@ -60,14 +61,14 @@ fun CreateLayout(modifier: Modifier = Modifier) {
             modifier = modifier.fillMaxWidth().fillMaxHeight(1F)
         ) {
             CreateTile(
-                title = "Row composable",
-                description = "A layout composable that places its children in a horizontal sequence.",
+                title = stringResource(R.string.row_composable_title),
+                description = stringResource(R.string.row_composable_desc),
                 color = Color.Cyan,
                 modifier = modifier.weight(1F)
             )
             CreateTile(
-                title = "Column composable",
-                description = "A layout composable that places its children in a vertical sequence.",
+                title = stringResource(R.string.column_composable_title),
+                description = stringResource(R.string.column_composable_desc),
                 color = Color.LightGray,
                 modifier = modifier.weight(1F)
             )
