@@ -14,6 +14,7 @@ val Outfit = FontFamily(
 )
 // Set of Material typography styles to start with
 val Typography = Typography(
+    defaultFontFamily = Outfit,
     h1 = TextStyle(
         fontFamily = Outfit,
         fontWeight = FontWeight.Bold,
