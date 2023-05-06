@@ -66,7 +66,8 @@ fun GenerateNameAndPhoto(modifier: Modifier = Modifier) {
         Text(
             text = "Sir Licks-a-Lot",
             color = Color.White,
-            fontSize = 45.sp
+            fontSize = 45.sp,
+            style = MaterialTheme.typography.body1
         )
         Text(
             text = "Head of Human Training and Obedience (HHOT)",
@@ -74,7 +75,8 @@ fun GenerateNameAndPhoto(modifier: Modifier = Modifier) {
             fontSize = 25.sp,
             textAlign = TextAlign.Center,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(bottom = 10.dp)
+            modifier = Modifier.padding(bottom = 10.dp),
+            style = MaterialTheme.typography.h1
         )
     }
 }
@@ -122,7 +124,8 @@ fun GenerateDetailCard(
         Text(
             color = Color.White,
             text = text,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            style = MaterialTheme.typography.body1
         )
     }
 }
@@ -137,7 +140,7 @@ fun Greeting(
         modifier = modifier
             .background(color = Color(0xFF991b1b))
             .fillMaxHeight(1F).fillMaxWidth(),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Center,
     ) {
         GenerateNameAndPhoto()
         GenerateDetails()
@@ -146,7 +149,8 @@ fun Greeting(
             color = Color(0xFFfbe9e9),
             textAlign = TextAlign.Center,
             fontSize = 16.sp,
-            text = "@pmcoding"
+            text = "@pmcoding",
+            style = MaterialTheme.typography.body1
         )
     }
 }
