@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -64,12 +65,12 @@ fun GenerateNameAndPhoto(modifier: Modifier = Modifier) {
         )
         Spacer(modifier = Modifier.height(height = 30.dp))
         Text(
-            text = "Sir Licks-a-Lot",
+            text = stringResource(R.string.bc_name),
             color = Color.White,
             fontSize = 45.sp,
         )
         Text(
-            text = "Head of Human Training and Obedience (HHOT)",
+            text = stringResource(R.string.bc_title),
             color = Color.White,
             fontSize = 25.sp,
             textAlign = TextAlign.Center,
@@ -89,18 +90,18 @@ fun GenerateDetails(modifier: Modifier = Modifier) {
     ) {
         GenerateDetailCard(
             Icons.Default.Email,
-            "Email Icon",
-            "go.away@hhot.meow"
+            stringResource(R.string.bc_email_icon_alt),
+            stringResource(R.string.bc_email_text)
         )
         GenerateDetailCard(
             Icons.Default.Phone,
-            "Phone Icon",
-            "Don't call unless you're dying"
+            stringResource(R.string.bc_phone_icon_alt),
+            stringResource(R.string.bc_phone_text)
         )
         GenerateDetailCard(
             Icons.Default.Home,
-            "Website Icon",
-            "www.hhot.meow"
+            stringResource(R.string.bc_website_icon_alt),
+            stringResource(R.string.bc_website_text)
         )
     }
 }
@@ -143,11 +144,11 @@ fun Greeting(
         GenerateNameAndPhoto()
         GenerateDetails()
         Text(
-            modifier = Modifier.fillMaxWidth().offset(y = 120.dp),
+            modifier = Modifier.fillMaxWidth().offset(y = 60.dp),
             color = Color(0xFFfbe9e9),
             textAlign = TextAlign.Center,
             fontSize = 16.sp,
-            text = "@pmcoding"
+            text = stringResource(R.string.bc_credit)
         )
     }
 }

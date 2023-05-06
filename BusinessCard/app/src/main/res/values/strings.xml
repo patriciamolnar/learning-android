@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">BusinessCard</string>
+    <string name="bc_name">Sir Licks-a-Lot</string>
+    <string name="bc_title">Head of Human Training and Obedience (HHOT)</string>
+    <string name="bc_email_icon_alt">Email Icon</string>
+    <string name="bc_email_text">go.away@hhot.meow</string>
+    <string name="bc_phone_icon_alt">Phone Icon</string>
+    <string name="bc_phone_text">Don\'t call unless you\'re dying</string>
+    <string name="bc_website_icon_alt">Website Icon</string>
+    <string name="bc_website_text">www.hhot.meow</string>
+    <string name="bc_credit">\@pmcoding</string>
 </resources>
