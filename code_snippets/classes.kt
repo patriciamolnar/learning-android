@@ -3,14 +3,14 @@ class SmartTvDevice(name: String, category: String) :
 {
     override val deviceType = "Smart TV"
     
-    var speakerVolume = 2
+    private var speakerVolume = 2
         set(value) {
             if(value in 1..100) {
                 field = value
             }
         }
         
-    var channelValue = 1
+    private var channelValue = 1
         set(value) {
             if(value in 1..200) {
                 field = value
@@ -35,7 +35,7 @@ class SmartTvDevice(name: String, category: String) :
         println("Speaker volume increased to $speakerVolume")
     }
     
-    fun nextChannel() {
+    internal fun nextChannel() {
         channelValue++
         println("Channel number increased to $channelValue")
     }
@@ -46,7 +46,7 @@ class SmartLightDevice(name: String, category: String) :
     
     override val deviceType = "Smart Light"
     
-    var brightnessLevel = 0
+    private var brightnessLevel = 0
         set(value) {
             if(value in 1..100) {
                 field = value
@@ -72,6 +72,8 @@ class SmartLightDevice(name: String, category: String) :
 }
 open class SmartDevice constructor(val name: String, val category: String) {
     var deviceStatus = "online"
+    	protected set
+    
     open val deviceType = "unknown"
     
     constructor(name: String, category: String, statusCode: Int): this(name, category) {
@@ -95,11 +97,16 @@ class SmartHome(
     val smartTvDevice: SmartTvDevice,
     val smartLightDevice: SmartLightDevice
 ) {
+    var deviceTurnOnCount = 0
+        private set
+    
     fun turnOnTv() {
+        deviceTurnOnCount++
         smartTvDevice.turnOn()
     }
     
     fun turnOffTv() {
+        deviceTurnOnCount--
         smartTvDevice.turnOff()
     }
     
@@ -112,10 +119,12 @@ class SmartHome(
     }
 
     fun turnOnLight() {
+        deviceTurnOnCount++
         smartLightDevice.turnOn()
     }
 
     fun turnOffLight() {
+        deviceTurnOnCount--
         smartLightDevice.turnOff()
     }
     
