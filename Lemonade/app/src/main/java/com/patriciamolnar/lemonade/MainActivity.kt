@@ -64,6 +64,9 @@ fun LemonadeHeader(modifier: Modifier) {
 @Composable
 fun CatsMakingLemonadeApp() {
     var level by remember { mutableStateOf(1)}
+    var lemonSqueezedAmount by remember { mutableStateOf(
+        (1..6).random()
+    )}
     val imageResource = when(level) {
         1 -> R.drawable.cat_lemon_tree
         2 -> R.drawable.cat_lemon
@@ -88,11 +91,15 @@ fun CatsMakingLemonadeApp() {
             TextButton(
                 onClick = {
                     when(level) {
-                        1, 2, 3 -> level += 1
+                        1, 3 -> level += 1
+                        2 -> if(lemonSqueezedAmount == 0) {
+                            level += 1
+                        } else {
+                            lemonSqueezedAmount -= 1
+                        }
                         else -> level = 1
                     }
-                },
-
+                }
             ) {
                 Image(
                     painter = image,
@@ -103,6 +110,7 @@ fun CatsMakingLemonadeApp() {
                 )
             }
             Spacer(modifier = Modifier.height(30.dp))
+            Text(lemonSqueezedAmount.toString())
             Text(imageDescription)
         }
 
