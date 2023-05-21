@@ -3,9 +3,12 @@ package com.patriciamolnar.lemonade
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -22,6 +25,8 @@ import androidx.compose.ui.unit.dp
 import com.patriciamolnar.lemonade.ui.theme.LemonadeTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.sp
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,8 +58,9 @@ fun DefaultPreview() {
 fun LemonadeHeader(modifier: Modifier) {
     Row(modifier = modifier
         .fillMaxWidth()
-        .background(Color.Cyan, RectangleShape)) {
+        .background(color = Color(0xFF102119), RectangleShape)) {
         Text(
+            color = Color(0xFFBDDBB9),
             text = "Cats making Lemonade (not for you though)",
             modifier = Modifier.padding(12.dp)
         )
@@ -81,12 +87,13 @@ fun CatsMakingLemonadeApp() {
         else -> "Muffin is not happy all the lemonade is gone. Click the image to make some moar before she murders you in your sleep."
     }
 
-    Column() {
+    Column(modifier = Modifier.background(color = Color(0xFF34614C))) {
         LemonadeHeader(modifier = Modifier)
-        Column(modifier = Modifier.fillMaxSize(),
+        Column(modifier = Modifier.fillMaxSize().padding(10.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
+            val borderWidth = 4.dp
             val image = painterResource(id = imageResource)
             TextButton(
                 onClick = {
@@ -106,12 +113,21 @@ fun CatsMakingLemonadeApp() {
                     contentDescription = imageDescription,
                     modifier = Modifier
                         .width(200.dp)
+                        .border(
+                            BorderStroke(borderWidth, Color.Yellow),
+                            RoundedCornerShape(20.dp)
+                        )
+                        .padding(4.dp)
                         .clip(RoundedCornerShape(20.dp))
                 )
             }
             Spacer(modifier = Modifier.height(30.dp))
-            Text(lemonSqueezedAmount.toString())
-            Text(imageDescription)
+            Text(
+                text = imageDescription,
+                textAlign = TextAlign.Center,
+                color = Color(0xFFBDDBB9),
+                fontSize = 16.sp
+            )
         }
 
 
