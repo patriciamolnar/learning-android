@@ -55,7 +55,7 @@ fun LemonadeHeader(modifier: Modifier) {
         .fillMaxWidth()
         .background(Color.Cyan, RectangleShape)) {
         Text(
-            text = "Cats making Lemonade",
+            text = "Cats making Lemonade (not for you though)",
             modifier = Modifier.padding(12.dp)
         )
     }
@@ -65,7 +65,7 @@ fun LemonadeHeader(modifier: Modifier) {
 fun CatsMakingLemonadeApp() {
     var level by remember { mutableStateOf(1)}
     var lemonSqueezedAmount by remember { mutableStateOf(
-        (1..6).random()
+        (2..4).random()
     )}
     val imageResource = when(level) {
         1 -> R.drawable.cat_lemon_tree
@@ -75,10 +75,10 @@ fun CatsMakingLemonadeApp() {
     }
 
     val imageDescription = when(level) {
-        1 -> "Click image to help X pick some lemons"
-        2 -> "Click image to help with squeezing them"
-        3 -> "Click image to drink it"
-        else -> "No more lemonade left. Click image if you want moar!"
+        1 -> "Whiskers here is trying to get you the best lemons. Pick the lemons for her by clicking the photo."
+        2 -> "Wiggles here seems to be having a lemon-squeeze-crisis. Help her get the juice by clicking the image."
+        3 -> "Sushi is enjoying the sun. Click the image to ensure she stays hydrated with that fresh lemonade."
+        else -> "Muffin is not happy all the lemonade is gone. Click the image before she murders you in your sleep."
     }
 
     Column() {
