@@ -7,10 +7,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -21,6 +21,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.patriciamolnar.lemonade.ui.theme.LemonadeTheme
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.ContentScale
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +44,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun CatsMakingLemonadeApp() {
+    var level by remember { mutableStateOf(1)}
     Column() {
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -55,13 +59,19 @@ fun CatsMakingLemonadeApp() {
             verticalArrangement = Arrangement.Center
         ) {
             val image = painterResource(id = R.drawable.cat_lemon_tree)
-            Image(
-                painter = image,
-                contentDescription = "Cat picking some lemons",
-                modifier = Modifier
-                    .width(200.dp)
-                    .clip(RoundedCornerShape(20.dp))
-            )
+            TextButton(
+                onClick = { level = 2 },
+
+            ) {
+                Image(
+                    painter = image,
+                    contentDescription = "Cat picking some lemons",
+                    modifier = Modifier
+                        .width(200.dp)
+                        .clip(RoundedCornerShape(20.dp))
+                )
+            }
+            Text(text = level.toString())
             Spacer(modifier = Modifier.height(30.dp))
             Text("Click image to help cat get some lemons")
         }
