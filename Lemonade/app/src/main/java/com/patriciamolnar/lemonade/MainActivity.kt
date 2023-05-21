@@ -16,14 +16,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
-import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.patriciamolnar.lemonade.ui.theme.LemonadeTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.layout.ContentScale
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,17 +41,22 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
+fun LemonadeHeader(modifier: Modifier) {
+    Row(modifier = modifier
+        .fillMaxWidth()
+        .background(Color.Cyan, RectangleShape)) {
+        Text(
+            text = "Cats making Lemonade",
+            modifier = Modifier.padding(12.dp)
+        )
+    }
+}
+
+@Composable
 fun CatsMakingLemonadeApp() {
     var level by remember { mutableStateOf(1)}
     Column() {
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .background(Color.Cyan, RectangleShape)) {
-            Text(
-                text = "Cats making Lemonade",
-                modifier = Modifier.padding(12.dp)
-            )
-        }
+        LemonadeHeader(modifier = Modifier)
         Column(modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
