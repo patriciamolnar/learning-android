@@ -40,6 +40,15 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+@Preview(showBackground = true, showSystemUi = true)
+@Composable
+fun DefaultPreview() {
+    LemonadeTheme {
+        CatsMakingLemonadeApp()
+    }
+}
+
+
 @Composable
 fun LemonadeHeader(modifier: Modifier) {
     Row(modifier = modifier
@@ -55,40 +64,50 @@ fun LemonadeHeader(modifier: Modifier) {
 @Composable
 fun CatsMakingLemonadeApp() {
     var level by remember { mutableStateOf(1)}
+    val imageResource = when(level) {
+        1 -> R.drawable.cat_lemon_tree
+        2 -> R.drawable.cat_lemon
+        3 -> R.drawable.cat_drink
+        else -> R.drawable.cat_more
+    }
+
+    val imageDescription = when(level) {
+        1 -> "Click image to help X pick some lemons"
+        2 -> "Click image to help with squeezing them"
+        3 -> "Click image to drink it"
+        else -> "No more lemonade left. Click image if you want moar!"
+    }
+
     Column() {
         LemonadeHeader(modifier = Modifier)
         Column(modifier = Modifier.fillMaxSize(),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            val image = painterResource(id = R.drawable.cat_lemon_tree)
+            val image = painterResource(id = imageResource)
             TextButton(
-                onClick = { level = 2 },
+                onClick = {
+                    when(level) {
+                        1, 2, 3 -> level += 1
+                        else -> level = 1
+                    }
+                },
 
             ) {
                 Image(
                     painter = image,
-                    contentDescription = "Cat picking some lemons",
+                    contentDescription = imageDescription,
                     modifier = Modifier
                         .width(200.dp)
                         .clip(RoundedCornerShape(20.dp))
                 )
             }
-            Text(text = level.toString())
             Spacer(modifier = Modifier.height(30.dp))
-            Text("Click image to help cat get some lemons")
+            Text(imageDescription)
         }
 
 
     }
 
 
-}
-
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun DefaultPreview() {
-    LemonadeTheme {
-        CatsMakingLemonadeApp()
-    }
 }
