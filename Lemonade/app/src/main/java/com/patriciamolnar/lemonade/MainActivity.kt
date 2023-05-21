@@ -75,10 +75,10 @@ fun CatsMakingLemonadeApp() {
     }
 
     val imageDescription = when(level) {
-        1 -> "Whiskers here is trying to get you the best lemons. Pick the lemons for her by clicking the photo."
-        2 -> "Wiggles here seems to be having a lemon-squeeze-crisis. Help her get the juice by clicking the image."
-        3 -> "Sushi is enjoying the sun. Click the image to ensure she stays hydrated with that fresh lemonade."
-        else -> "Muffin is not happy all the lemonade is gone. Click the image before she murders you in your sleep."
+        1 -> "Whiskers here is trying (& failing) to get the best lemons. Pick them for her by clicking the photo."
+        2 -> "Wiggles is a cat and seems to be disturbed by the idea of her doing any work. Click the image $lemonSqueezedAmount times to milk them juicy lemons for her"
+        3 -> "Sushi is enjoying roasting in the sun. Click the image to ensure she stays hydrated with that fresh lemonade."
+        else -> "Muffin is not happy all the lemonade is gone. Click the image to make some moar before she murders you in your sleep."
     }
 
     Column() {
