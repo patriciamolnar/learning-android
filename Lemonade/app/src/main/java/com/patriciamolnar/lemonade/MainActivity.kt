@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import com.patriciamolnar.lemonade.ui.theme.LemonadeTheme
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.sp
@@ -77,7 +78,7 @@ fun LemonadeHeader(modifier: Modifier) {
             )
         }
         Text(
-            color = Color(0xFFBDDBB9),
+            color = Color.White,
             text = stringResource(R.string.header_subtitle),
             textAlign = TextAlign.End,
             fontStyle = FontStyle.Italic,
@@ -98,31 +99,31 @@ fun CatsMakingLemonadeApp() {
         1 -> R.drawable.cat_lemon_tree
         2 -> R.drawable.cat_lemon
         3 -> R.drawable.cat_drink
-        else -> R.drawable.cat_more
+        else -> R.drawable.cat_angry
     }
 
     val imageDescription = when(level) {
-        1 -> "Whiskers here is trying (& failing) to get the best lemons. Pick them for her by clicking the photo."
+        1 -> "Whiskers is trying to pick the best lemons for the lemonade. Pick them for her by clicking the photo."
         2 -> "Wiggles is a cat and seems to be disturbed by the idea of her doing any work. Click the image $lemonSqueezedAmount times to milk them juicy lemons for her"
         3 -> "Sushi is enjoying roasting in the sun. Click the image to ensure she stays hydrated with that fresh lemonade."
-        else -> "Muffin is not happy all the lemonade is gone. Click the image to make some moar before she murders you in your sleep."
+        else -> "Muffin is not happy Sushi drank all the lemonade. Click the image to make some moar before she murders you in your sleep."
     }
+
+    val borderWidth = 4.dp
+    val image = painterResource(id = imageResource)
 
     Column(modifier = Modifier.background(color = Color(0xFF34614C))) {
         LemonadeHeader(modifier = Modifier)
         Column(modifier = Modifier
             .fillMaxSize()
             .padding(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val borderWidth = 4.dp
-            val image = painterResource(id = imageResource)
             TextButton(
                 onClick = {
                     when(level) {
                         1, 3 -> level += 1
-                        2 -> if(lemonSqueezedAmount == 0) {
+                        2 -> if(lemonSqueezedAmount == 1) {
                             level += 1
                         } else {
                             lemonSqueezedAmount -= 1
@@ -134,22 +135,22 @@ fun CatsMakingLemonadeApp() {
                 Image(
                     painter = image,
                     contentDescription = imageDescription,
+                    contentScale = ContentScale.FillWidth,
                     modifier = Modifier
-                        .width(200.dp)
+                        .fillMaxWidth()
                         .border(
                             BorderStroke(borderWidth, Color.Yellow),
                             RoundedCornerShape(20.dp)
                         )
                         .padding(4.dp)
-                        .clip(RoundedCornerShape(20.dp))
+                        .clip(RoundedCornerShape(15.dp))
                 )
             }
-            Spacer(modifier = Modifier.height(30.dp))
             Text(
                 text = imageDescription,
                 textAlign = TextAlign.Center,
-                color = Color(0xFFBDDBB9),
-                fontSize = 16.sp
+                color = Color.White,
+                fontSize = 24.sp
             )
         }
 
