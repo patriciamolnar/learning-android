@@ -57,7 +57,7 @@ fun DefaultPreview() {
 
 
 @Composable
-fun LemonadeHeader(modifier: Modifier) {
+fun LemonadeHeader(modifier: Modifier = Modifier) {
     val lemonadeIcon = painterResource(id = R.drawable.iconmonstr_lemonade)
     val headerPadding = 12.dp
 
@@ -90,7 +90,7 @@ fun LemonadeHeader(modifier: Modifier) {
 }
 
 @Composable
-fun CatsMakingLemonadeApp() {
+fun LemonadeMain(modifier: Modifier = Modifier) {
     var level by remember { mutableStateOf(1)}
     var lemonSqueezedAmount by remember { mutableStateOf(
         (2..4).random()
@@ -112,50 +112,51 @@ fun CatsMakingLemonadeApp() {
     val borderWidth = 4.dp
     val image = painterResource(id = imageResource)
 
-    Column(modifier = Modifier.background(color = Color(0xFF34614C))) {
-        LemonadeHeader(modifier = Modifier)
-        Column(modifier = Modifier
-            .fillMaxSize()
-            .padding(10.dp),
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            TextButton(
-                onClick = {
-                    when(level) {
-                        1, 3 -> level += 1
-                        2 -> if(lemonSqueezedAmount == 1) {
-                            level += 1
-                        } else {
-                            lemonSqueezedAmount -= 1
-                        }
-                        else -> level = 1
+    Column(modifier = Modifier
+        .fillMaxSize()
+        .padding(10.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        TextButton(
+            onClick = {
+                when(level) {
+                    1, 3 -> level += 1
+                    2 -> if(lemonSqueezedAmount == 1) {
+                        level += 1
+                    } else {
+                        lemonSqueezedAmount -= 1
                     }
+                    else -> level = 1
                 }
-            ) {
-                Image(
-                    painter = image,
-                    contentDescription = imageDescription,
-                    contentScale = ContentScale.FillWidth,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .border(
-                            BorderStroke(borderWidth, Color.Yellow),
-                            RoundedCornerShape(20.dp)
-                        )
-                        .padding(4.dp)
-                        .clip(RoundedCornerShape(15.dp))
-                )
             }
-            Text(
-                text = imageDescription,
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                fontSize = 24.sp
+        ) {
+            Image(
+                painter = image,
+                contentDescription = imageDescription,
+                contentScale = ContentScale.FillWidth,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .border(
+                        BorderStroke(borderWidth, Color.Yellow),
+                        RoundedCornerShape(20.dp)
+                    )
+                    .padding(4.dp)
+                    .clip(RoundedCornerShape(15.dp))
             )
         }
-
-
+        Text(
+            text = imageDescription,
+            textAlign = TextAlign.Center,
+            color = Color.White,
+            fontSize = 24.sp
+        )
     }
+}
 
-
+@Composable
+fun CatsMakingLemonadeApp() {
+    Column(modifier = Modifier.background(color = Color(0xFF34614C))) {
+        LemonadeHeader(modifier = Modifier)
+        LemonadeMain(modifier = Modifier)
+    }
 }
