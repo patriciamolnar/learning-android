@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Lemonade</string>
     <string name="header_title">Cats making Lemonade</string>
-    <string name="header_subtitle">...not for you though</string>
+    <string name="header_subtitle">...but not for you</string>
+    <string name="step_1">Whiskers is trying to pick the best lemons for the lemonade. She\'s too small so pick them for her by clicking the photo.</string>
+    <string name="step_2">Wiggles seems to be disturbed by the idea of her doing any work. Click the image %1$d times to milk them juicy lemons for her.</string>
+    <string name="step_3">Sushi is enjoying roasting in the sun. Click to ensure she stays hydrated with that fresh lemonade.</string>
+    <string name="step_4">Muffin is not happy all the lemonade is gone. Tap the image to make some more before she murders you in your sleep.</string>
 </resources>

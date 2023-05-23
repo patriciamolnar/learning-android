@@ -103,10 +103,10 @@ fun CatsMakingLemonadeApp() {
     }
 
     val imageDescription = when(level) {
-        1 -> "Whiskers is trying to pick the best lemons for the lemonade. Pick them for her by clicking the photo."
-        2 -> "Wiggles is a cat and seems to be disturbed by the idea of her doing any work. Click the image $lemonSqueezedAmount times to milk them juicy lemons for her"
-        3 -> "Sushi is enjoying roasting in the sun. Click the image to ensure she stays hydrated with that fresh lemonade."
-        else -> "Muffin is not happy Sushi drank all the lemonade. Click the image to make some moar before she murders you in your sleep."
+        1 -> stringResource(R.string.step_1)
+        2 -> stringResource(R.string.step_2, lemonSqueezedAmount)
+        3 -> stringResource(R.string.step_3)
+        else -> stringResource(R.string.step_4)
     }
 
     val borderWidth = 4.dp
