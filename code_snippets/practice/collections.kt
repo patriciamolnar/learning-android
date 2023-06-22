@@ -66,3 +66,24 @@ fun main() {
     
     println("You have ${numOfShortEvents.size} short events")
 }
+
+// task 5
+val groupedEvents = events.groupBy {
+    it.daypart
+}
+
+groupedEvents.forEach { (daypart, events) -> 
+    println("$daypart: ${events.size} events")
+}
+
+// task 6
+println("Last event of the day: ${events[events.size - 1].title}")
+println("Last event of the day: ${events.last().title}")
+
+// task 7
+val Event.durationOfEvent: String
+    get() = if (this.durationInMinutes < 60) {
+        "short"
+    } else {
+        "long"
+    }
