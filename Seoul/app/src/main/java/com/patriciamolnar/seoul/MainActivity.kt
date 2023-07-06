@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,12 +17,15 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.patriciamolnar.seoul.ui.theme.SeoulTheme
 
 class MainActivity : ComponentActivity() {
@@ -58,14 +62,32 @@ fun SeoulToDoApp(modifier: Modifier = Modifier) {
 fun SeoulHeader(modifier: Modifier = Modifier) {
     Row(modifier = modifier
         .fillMaxWidth()
-        .background(Color(0xFF0045A1))) {
+        .background(Color(0xFF0045A1)),
+        horizontalArrangement = Arrangement.Start,
+        verticalAlignment = Alignment.Bottom
+    ) {
         Text(
             text = "Seoul",
-            modifier = modifier.padding(20.dp)
+            modifier = modifier.padding(
+                start = 10.dp,
+                top = 10.dp,
+                bottom = 10.dp
+            ),
+            style = MaterialTheme.typography.titleLarge,
+            color = Color.White,
+            fontSize = 40.sp
         )
         Text(
-            text = "Top 10 attractions",
-            modifier = modifier.padding(20.dp)
+            text = "•",
+            color = Color(0xFF99c5ff),
+            fontSize = 40.sp,
+            modifier = modifier.padding(bottom = 10.dp, start = 10.dp, end = 6.dp),
+        )
+        Text(
+            text = "Top Attractions",
+            modifier = modifier.padding(vertical = 20.dp),
+            color = Color.White,
+            fontSize = 20.sp
         )
     }
 }
