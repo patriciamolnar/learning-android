@@ -19,7 +19,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontFamily
@@ -73,21 +75,42 @@ fun SeoulHeader(modifier: Modifier = Modifier) {
                 top = 10.dp,
                 bottom = 10.dp
             ),
-            style = MaterialTheme.typography.titleLarge,
+            style = MaterialTheme.typography.titleLarge.copy(
+                shadow = Shadow(
+                    color = Color(0xFF002c66),
+                    offset = Offset(x = 4f, y = 4f),
+                    blurRadius = 0.5f
+                )
+            ),
             color = Color.White,
-            fontSize = 40.sp
+            fontSize = 40.sp,
+
         )
         Text(
             text = "•",
             color = Color(0xFF99c5ff),
             fontSize = 40.sp,
             modifier = modifier.padding(bottom = 10.dp, start = 10.dp, end = 6.dp),
+            style = MaterialTheme.typography.bodyLarge.copy(
+                shadow = Shadow(
+                    color = Color(0xFF002c66),
+                    offset = Offset(x = 4f, y = 4f),
+                    blurRadius = 0.25f
+                )
+            )
         )
         Text(
             text = "Top Attractions",
             modifier = modifier.padding(vertical = 20.dp),
             color = Color.White,
-            fontSize = 20.sp
+            fontSize = 20.sp,
+            style = MaterialTheme.typography.bodyLarge.copy(
+                shadow = Shadow(
+                    color = Color(0xFF002c66),
+                    offset = Offset(x = 4f, y = 4f),
+                    blurRadius = 0.25f
+                )
+            )
         )
     }
 }
@@ -98,11 +121,11 @@ fun SeoulAttractionImage() {
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colorScheme.primary
     ) {
-        Image(
-            painter = painterResource(id = R.drawable.pexels_jakob_jin_12273121),
-            contentDescription = null,
-            modifier = Modifier.padding(20.dp)
-        )
+//        Image(
+//            painter = painterResource(id = R.drawable.pexels_jakob_jin_12273121),
+//            contentDescription = null,
+//            modifier = Modifier.padding(20.dp)
+//        )
     }
 }
 
