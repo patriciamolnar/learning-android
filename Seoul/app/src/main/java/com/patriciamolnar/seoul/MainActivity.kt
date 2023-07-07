@@ -121,11 +121,11 @@ fun SeoulAttractionImage() {
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colorScheme.primary
     ) {
-//        Image(
-//            painter = painterResource(id = R.drawable.pexels_jakob_jin_12273121),
-//            contentDescription = null,
-//            modifier = Modifier.padding(20.dp)
-//        )
+        Image(
+            painter = painterResource(id = R.drawable.pexels_vishnu_murali_11997115),
+            contentDescription = null,
+            modifier = Modifier.padding(20.dp)
+        )
     }
 }
 
